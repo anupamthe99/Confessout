@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container" style="height:76.2vh";>
+    <div class="album py-5 bg-light mt-3">
+        <div class="container">
+    
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+                <div class="card shadow-sm">
+                    {% load static %}
+                  <img src="{% static 'img/kmc.jpg' %}" alt="">
+      
+                  <div class="card-body">
+                    <p class="card-text"><strong>KMC</strong></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col ms-4">
+                <div class="card shadow-sm">
+                    {% load static %}
+                  <img src="{% static 'img/kmc.jpg' %}" alt="">
+      
+                  <div class="card-body">
+                    <p class="card-text"><strong>KMC</strong></p>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="h3 text text-center mt-3">Soon other colleges will also be added .You can provide name of your college in the contact form.</div>
+        </div>
+      </div>
+</div>
+{% endblock body %}

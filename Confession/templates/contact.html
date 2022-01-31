@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if message %}
+<div class="alert alert-success" role="alert">
+  Thanks for contacting us
+</div>
+{% endif %} 
+{% if  message %}
+<div class="container" >
+<div class="h1 text-center mt-5" style="height: 60.1vh;">Your message has been sent to us.</div>
+</div>
+{%else%}
+<div class="container" style="height: 78.9vh;">
+    <div class="text-center h2">Contact Us</div>
+    <form action="/contact" method="post">
+      {%csrf_token%}
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="name">
+      
+        <label for="exampleFormControlInput1" class="form-label">Subject</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="subject">
+
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com" name="email">
+      
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
+      </div>
+      <button class="btn btn-secondary" type="submit">Send Message</button>
+    </div>
+</form>
+</div>
+{% endif %}
+{% endblock body %}
