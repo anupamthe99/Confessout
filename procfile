@@ -1,1 +1,1 @@
-web: gunicorn Confessout.wsgi --log-file -
+web: gunicorn Confession.wsgi --log-file -
