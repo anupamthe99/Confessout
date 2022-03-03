@@ -4,7 +4,6 @@ import imp
 from unittest import result
 from django.shortcuts import render
 from numpy import source
-from Confession.models import Confession
 from Confession.models import Contact
 
 # for text to img covert
@@ -35,11 +34,6 @@ def confession(request):
             d1.text((0, a), word, fill=(255, 255, 255), font=myFont)
             a += 40
         img.save(f"gallery/{ide}.jpeg")
-        ins=Confession(message=message,img="image.jpeg")
-        ins.save()
-        
-        
-
     disctionary={"message":message,"activehome":"active"}  
     return render(request,"confession.html",disctionary)
 def colleges(request):
