@@ -1,20 +1,45 @@
 from email import message
+from email.mime import image
+import imp
+from unittest import result
 from django.shortcuts import render
+from numpy import source
 from Confession.models import Confession
 from Confession.models import Contact
+
+# for text to img covert
+from PIL import Image, ImageDraw, ImageFont
+import textwrap
+
+from random import random
+
 # Create your views here.
 def index(request):
     disctionary={"activehome":"active"}
-    print("Hello")
     return render(request,"index.html",disctionary)
 def confession(request):
     if request.method=="POST":
-        print("hey whats up man")
         message=request.POST.get('confession-msg')
-        print(message)
-        ins=Confession(message=message)
+        ide=random()
+        print("=============================================================================")
+
+        # Drawing image
+        img = Image.new('RGB', (1080, 1080), color=(0, 0, 0))
+        d1 = ImageDraw.Draw(img)
+
+        myFont = ImageFont.truetype("arial.ttf", size=40)
+        words = message
+        lines = textwrap.wrap(words, width=60)
+        a = 0
+        for word in lines:
+            d1.text((0, a), word, fill=(255, 255, 255), font=myFont)
+            a += 40
+        img.save(f"gallery/{ide}.jpeg")
+        ins=Confession(message=message,img="image.jpeg")
         ins.save()
-        print("The data has been written")
+        
+        
+
     disctionary={"message":message,"activehome":"active"}  
     return render(request,"confession.html",disctionary)
 def colleges(request):
